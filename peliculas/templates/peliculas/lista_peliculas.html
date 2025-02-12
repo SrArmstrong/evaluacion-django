@@ -1,0 +1,15 @@
+<h2>Lista de Películas</h2>
+<a href="{% url 'agregar_pelicula' %}">Agregar Película</a>
+<ul>
+    {% for pelicula in peliculas %}
+        <li>
+            <strong>{{ pelicula.titulo }}</strong> ({{ pelicula.anio }}) - Dirigida por {{ pelicula.director }} 
+            {% if pelicula.poster %}
+                <br><img src="{{ pelicula.poster }}" alt="{{ pelicula.titulo }}" width="100">
+            {% endif %}
+            <br>
+            <a href="{% url 'editar_pelicula' pelicula.id %}">Editar</a> | 
+            <a href="{% url 'eliminar_pelicula' pelicula.id %}">Eliminar</a>
+        </li>
+    {% endfor %}
+</ul>
