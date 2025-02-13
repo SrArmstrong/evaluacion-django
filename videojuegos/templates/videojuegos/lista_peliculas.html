@@ -1,0 +1,15 @@
+<h2>Lista de Videojuegos</h2>
+<a href="{% url 'agregar_videojuego' %}">Agregar Videojuego</a>
+<ul>
+    {% for videojuego in videojuegos %}
+        <li>
+            <strong>{{ videojuego.titulo }}</strong> ({{ videojuego.anio }}) - Dirigida por {{ videojuego.director }} 
+            {% if pelicula.poster %}
+                <br><img src="{{ pelicula.poster }}" alt="{{ pelicula.titulo }}" width="100">
+            {% endif %}
+            <br>
+            <a href="{% url 'editar_pelicula' pelicula.id %}">Editar</a> | 
+            <a href="{% url 'eliminar_pelicula' pelicula.id %}">Eliminar</a>
+        </li>
+    {% endfor %}
+</ul>
