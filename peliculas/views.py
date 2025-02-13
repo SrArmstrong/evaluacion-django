@@ -11,10 +11,11 @@ class PeliculaViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         "Asigna permisos según el método HTTP."
-        if self.request.method in ['POST', 'PUT']:
+        if self.request.method in ['POST', 'PUT','PATCH']:
             return [EsAdministrador()]
         elif self.request.method == 'DELETE':
             return [EsEliminador()]
         elif self.request.method == 'GET':
             return [EsVisualizador()]
-        return super().get_permissions()
+        else:
+            return [IsAuthenticated()]
